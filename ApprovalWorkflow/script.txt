@@ -1,0 +1,32 @@
+drop table TXN_REQUEST_TYPE;
+create table TXN_REQUEST_TYPE 
+(
+     REQ_ID                   INT                        PRIMARY KEY ,
+     REQUEST_NAME VARCHAR2(100) UNIQUE,
+     RULE_NAME         VARCHAR2(100)
+);
+
+INSERT INTO TXN_REQUEST_TYPE VALUES(1,'Trader Fund Request','Rule 1');
+INSERT INTO TXN_REQUEST_TYPE VALUES(2,'Bank Cheque Request','Rule 3');
+
+drop table  TXN_RULE;
+create table TXN_RULE
+(
+  REQ_ID              INT REFERENCES TXN_REQUEST_TYPE(REQ_ID),
+  RULE_NAME     VARCHAR2(100),
+  STAGE               INT,
+  APPROVER        VARCHAR2(100)
+);
+
+INSERT INTO TXN_RULE VALUES(1,'Rule 1',1,'Fund Manager');
+INSERT INTO TXN_RULE VALUES(1,'Rule 1',1,'Research Analyst');
+INSERT INTO TXN_RULE VALUES(1,'Rule 1',2,'Division Head');
+INSERT INTO TXN_RULE VALUES(1,'Rule 1',3,'Operations');
+
+INSERT INTO TXN_RULE VALUES(1,'Rule 2',1,'Fund Manager');
+INSERT INTO TXN_RULE VALUES(1,'Rule 2',2,'Research Analyst');
+INSERT INTO TXN_RULE VALUES(1,'Rule 2',3,'Division Head');
+INSERT INTO TXN_RULE VALUES(1,'Rule 2',4,'Operations');
+
+INSERT INTO TXN_RULE VALUES(2,'Rule 3',1,'Ordering Bank');
+INSERT INTO TXN_RULE VALUES(2,'Rule 3',2,'Account Owner Bank');

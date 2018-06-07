@@ -1,0 +1,6 @@
+com\transfer\RequestProcessing$1.class
+com\transfer\H2Connection.class
+com\transfer\RequestProcessing.class
+com\transfer\ProcessingDTO.class
+com\transfer\ProcessingEngine.class
+com\transfer\RuleDAO.class
